@@ -71,13 +71,7 @@ namespace UglyTrivia
                     isGettingOutOfPenaltyBox = true;
 
                     Console.WriteLine(players[currentPlayer] + " is getting out of the penalty box");
-                    places[currentPlayer] = places[currentPlayer] + roll;
-                    if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
-
-                    Console.WriteLine(players[currentPlayer]
-                            + "'s new location is "
-                            + places[currentPlayer]);
-                    Console.WriteLine("The category is " + currentCategory());
+                    MoveLocation(roll);
                     askQuestion();
                 }
                 else
@@ -88,20 +82,29 @@ namespace UglyTrivia
             }
             else
             {
-                places[currentPlayer] = places[currentPlayer] + roll;
-                if (places[currentPlayer] > 11) places[currentPlayer] = places[currentPlayer] - 12;
-
-                Console.WriteLine(players[currentPlayer]
-                        + "'s new location is "
-                        + places[currentPlayer]);
-                Console.WriteLine("The category is " + currentCategory());
+                MoveLocation(roll);
                 askQuestion();
             }
 
         }
 
+        private void MoveLocation(int roll)
+        {
+            places[currentPlayer] = places[currentPlayer] + roll;
+            if (places[currentPlayer] > 11)
+            {
+                places[currentPlayer] = places[currentPlayer] - 12;
+            }
+
+            Console.WriteLine(players[currentPlayer]
+                    + "'s new location is "
+                    + places[currentPlayer]);
+        }
+
         private void askQuestion()
         {
+            Console.WriteLine("The category is " + currentCategory());
+
             if (currentCategory() == "Pop")
             {
                 Console.WriteLine(popQuestions.First());
@@ -161,7 +164,6 @@ namespace UglyTrivia
             }
             else
             {
-
                 Console.WriteLine("Answer was corrent!!!!");
                 AddCoinToPlayersPurse();
 
@@ -193,7 +195,10 @@ namespace UglyTrivia
         private void AdvanceToNextPlayer()
         {
             currentPlayer++;
-            if (currentPlayer == players.Count) currentPlayer = 0;
+            if (currentPlayer == players.Count)
+            {
+                currentPlayer = 0;
+            }
         }
 
         private bool didPlayerWin()
