@@ -146,11 +146,7 @@ namespace UglyTrivia
                 if (isGettingOutOfPenaltyBox)
                 {
                     Console.WriteLine("Answer was correct!!!!");
-                    purses[currentPlayer]++;
-                    Console.WriteLine(players[currentPlayer]
-                            + " now has "
-                            + purses[currentPlayer]
-                            + " Gold Coins.");
+                    AddCoinToPlayersPurse();
 
                     bool winner = didPlayerWin();
                     AdvanceToNextPlayer();
@@ -167,17 +163,22 @@ namespace UglyTrivia
             {
 
                 Console.WriteLine("Answer was corrent!!!!");
-                purses[currentPlayer]++;
-                Console.WriteLine(players[currentPlayer]
-                        + " now has "
-                        + purses[currentPlayer]
-                        + " Gold Coins.");
+                AddCoinToPlayersPurse();
 
                 bool winner = didPlayerWin();
                 AdvanceToNextPlayer();
 
                 return winner;
             }
+        }
+
+        private void AddCoinToPlayersPurse()
+        {
+            purses[currentPlayer]++;
+            Console.WriteLine(players[currentPlayer]
+                    + " now has "
+                    + purses[currentPlayer]
+                    + " Gold Coins.");
         }
 
         public bool wrongAnswer()
