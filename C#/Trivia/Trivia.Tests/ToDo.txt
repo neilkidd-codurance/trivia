@@ -1,0 +1,9 @@
+﻿The final goal is to add a feature - be able to configure a game with different set of penalty rules.
+i.e. you should be able to run a game with current penalty rules (if someone fails to answer a question - go into penalty box)
+or the other set of rules (if someone fail to answer a science question - goes into penalty box for twice as long) (edited)
+
+[3:49] 
+to be able to do that and test-drive the new feature you need to add characterization tests around the current penalty behaviour first (edited)
+
+[3:50] 
+refactor along the way as needed

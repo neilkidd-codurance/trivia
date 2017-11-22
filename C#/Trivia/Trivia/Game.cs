@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace UglyTrivia
 {
@@ -154,15 +153,13 @@ namespace UglyTrivia
                             + " Gold Coins.");
 
                     bool winner = didPlayerWin();
-                    currentPlayer++;
-                    if (currentPlayer == players.Count) currentPlayer = 0;
+                    AdvanceToNextPlayer();
 
                     return winner;
                 }
                 else
                 {
-                    currentPlayer++;
-                    if (currentPlayer == players.Count) currentPlayer = 0;
+                    AdvanceToNextPlayer();
                     return true;
                 }
             }
@@ -177,8 +174,7 @@ namespace UglyTrivia
                         + " Gold Coins.");
 
                 bool winner = didPlayerWin();
-                currentPlayer++;
-                if (currentPlayer == players.Count) currentPlayer = 0;
+                AdvanceToNextPlayer();
 
                 return winner;
             }
@@ -189,12 +185,15 @@ namespace UglyTrivia
             Console.WriteLine("Question was incorrectly answered");
             Console.WriteLine(players[currentPlayer] + " was sent to the penalty box");
             inPenaltyBox[currentPlayer] = true;
-
-            currentPlayer++;
-            if (currentPlayer == players.Count) currentPlayer = 0;
+            AdvanceToNextPlayer();
             return true;
         }
 
+        private void AdvanceToNextPlayer()
+        {
+            currentPlayer++;
+            if (currentPlayer == players.Count) currentPlayer = 0;
+        }
 
         private bool didPlayerWin()
         {
